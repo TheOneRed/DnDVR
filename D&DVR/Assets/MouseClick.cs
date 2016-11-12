@@ -4,12 +4,7 @@ using System.Collections;
 public class MouseClick : MonoBehaviour {
 
 	public float pickUpRange;
-	GameObject picked;
-
-	/*void Update ()
-	{
-		
-	}*/
+	RoomController picked;
 
 	void Update() {
 		RaycastHit hit;
@@ -24,21 +19,20 @@ public class MouseClick : MonoBehaviour {
 			if(Physics.Raycast(transform.position, transform.forward, out hit, float.MaxValue, layerMask2) && hit.collider.gameObject.tag.Equals("Room"))
 			{
 				if (picked == null) {
-					picked = hit.collider.gameObject;
+					picked = hit.collider.gameObject.GetComponent<RoomController> ();
+					picked.ZeroRotation ();
+					picked.Slected ();
 				} else if (picked != null) {
-					picked.SendMessage ("RoundTransform");
+					picked.Placed ();
+					picked.UnSlect ();
 					picked = null;
 				}
 			}
 		}
 
-		/*if (Input.GetMouseButtonUp (1) && picked != null) {
-			picked.SendMessage ("AddYRotation", 0.5f);
-		}*/
-
 		if (picked != null && Physics.Raycast (transform.position, transform.forward, out hit, float.MaxValue, layerMask)) {
 			picked.transform.position = hit.point;
-			picked.SendMessage ("ZeroRotation");
+			picked.RoundTransform ();
 		}
 	}
 }
