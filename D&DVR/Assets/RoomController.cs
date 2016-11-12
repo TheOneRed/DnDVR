@@ -37,7 +37,7 @@ public class RoomController : MonoBehaviour {
 	}
 
 	public void ZeroRotation () {
-		this.transform.rotation = new Quaternion (0.0f, 0.0f , 0.0f, 0.0f);
+		this.transform.rotation = new Quaternion (0.0f, this.transform.rotation.y , 0.0f, 0.0f);
 	}
 
 	public void Slected () {
