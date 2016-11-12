@@ -9,14 +9,16 @@ public class EnemyController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
+		player = GameObject.FindWithTag ("Player").transform;
+		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-			transform.LookAt (player);
-			transform.position += transform.forward * MoveSpeed * Time.deltaTime;
 
+	void Update(){
+		
+		transform.LookAt (player);
+		transform.position += transform.forward * MoveSpeed * Time.deltaTime;
 	}
+
 
 }
 		
