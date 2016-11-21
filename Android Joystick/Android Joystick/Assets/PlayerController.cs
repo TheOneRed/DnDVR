@@ -14,7 +14,11 @@ public class PlayerController : NetworkBehaviour
 	{
 		myPlayer = this.GetComponent<Rigidbody>();
 	}
-	
+
+	void Update ()
+	{
+		
+	}
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
@@ -22,12 +26,6 @@ public class PlayerController : NetworkBehaviour
 		{
 			return;
 		}
-
-		#if UNITY_EDITOR
-		//stuff
-		#endif
-
-		#if UNITY_ANDROID
 
 		Vector3 moveVec = new Vector3 (CrossPlatformInputManager.GetAxis("Horizontal"),0, CrossPlatformInputManager.GetAxis("Vertical")) * moveForce;
 		bool isBoosting = CrossPlatformInputManager.GetButton ("Boost");
@@ -43,7 +41,6 @@ public class PlayerController : NetworkBehaviour
 		//a single line if else statment , is the player boosting? if its true its use multiplier if false use 1
 		myPlayer.AddForce (moveVec * (isBoosting ? boostMultipler : 1));
 
-		#endif
 	}
 
 	public override void OnStartLocalPlayer()
