@@ -6,19 +6,22 @@ public class Health : MonoBehaviour {
 
 	public Text healthLabel;
 	public Text scoreLabel;
-	public bool destroyOnDeath;
 	private int currentHealth = 100;
-	private int currentScore = 0;
+	public int currentScore = 0;
 
 	// Use this for initialization
 	void Start () {
-	
-	}
+		this.displayHealth ();
+		this.displayScore ();
+        //healthLabel = GameObject.FindGameObjectWithTag("Health").GetComponent<Text>();
+        //scoreLabel = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        healthLabel = GameObject.FindGameObjectWithTag("Health").GetComponent<Text>();
+        scoreLabel = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
+    }
 
 	public void TakeDamage(int amount)
 	{
@@ -38,7 +41,7 @@ public class Health : MonoBehaviour {
 
 	public void gainScore(int amount)
 	{
-		currentScore+= amount;
+		currentScore += amount;
 		displayScore ();
 	}
 

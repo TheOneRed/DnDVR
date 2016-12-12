@@ -3,17 +3,7 @@ using System.Collections;
 
 public class LandMine : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-	void OnCollisionEnter(Collision collision)
+	void OnTriggerEnter(Collider collision)
 	{
 		var hit = collision.gameObject;
 		var health = hit.GetComponent<Health>();
